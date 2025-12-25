@@ -162,3 +162,39 @@ footer {
   font-size: 0.9rem;
 }
 
+.articles {
+  max-width: 900px;
+  margin: auto;
+  padding: 60px 20px;
+}
+
+.article-item {
+  padding: 15px;
+  border-bottom: 1px solid #1e293b;
+  cursor: pointer;
+}
+
+.article-item:hover {
+  color: #38bdf8;
+}
+
+/* MODAL */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hidden { display: none; }
+
+.modal-box {
+  background: #020617;
+  max-width: 800px;
+  padding: 25px;
+  border-radius: 12px;
+  max-height: 90vh;
+  overflow-y: auto;
+}
