@@ -1,28 +1,32 @@
-const GAS_URL = "https://script.google.com/macros/s/AKfycbwM263dREny57y2nXBCrAvgesWLdITWPHJLjqv2NmALXkCMIK016bZ819bMwzX0hn4t2g/exec";
+const GAS_URL =
+  "https://script.google.com/macros/s/AKfycbwM263dREny57y2nXBCrAvgesWLdITWPHJLjqv2NmALXkCMIK016bZ819bMwzX0hn4t2g/exec";
 
-document.addEventListener('DOMContentLoaded', loadProjects);
+const grid = document.getElementById("projectsGrid");
 
-async function loadProjects() {
-  const res = await fetch(`${GAS_URL}?action=projects`);
-  const json = await res.json();
+fetch(`${GAS_URL}?action=projects`)
+  .then(res => res.json())
+  .then(json => {
+    grid.innerHTML = "";
 
-  if (!json.success) return;
+    if (!json.success || json.data.length === 0) {
+      grid.innerHTML = "<p>No projects found.</p>";
+      return;
+    }
 
-  const container = document.getElementById('projectsContainer');
-  container.innerHTML = '';
+    json.data.forEach(p => {
+      const card = document.createElement("div");
+      card.className = "project-card";
 
-  json.data.forEach(p => {
-    container.innerHTML += `
-      <div class="project-card">
-        <img src="${p.image || 'https://via.placeholder.com/400'}">
+      card.innerHTML = `
         <h3>${p.title}</h3>
-        <p>${p.description}</p>
-        <small>${p.tech}</small>
-        <div class="links">
-          <a href="${p.github}" target="_blank">GitHub</a>
-          <a href="${p.demo}" target="_blank">Live</a>
-        </div>
-      </div>
-    `;
+        <p>${p.description || ""}</p>
+        ${p.link ? `<a href="${p.link}" target="_blank">View Project →</a>` : ""}
+      `;
+
+      grid.appendChild(card);
+    });
+  })
+  .catch(err => {
+    grid.innerHTML = "<p>Error loading projects</p>";
+    console.error(err);
   });
-}
