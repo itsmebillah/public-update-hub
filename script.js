@@ -1,14 +1,14 @@
-<h1 id="title"></h1>
-<div id="content"></div>
+const API = "https://script.google.com/macros/s/AKfycbwM263dREny57y2nXBCrAvgesWLdITWPHJLjqv2NmALXkCMIK016bZ819bMwzX0hn4t2g/exec";
 
-<script>
-const slug = new URLSearchParams(location.search).get("slug");
-const API = "PASTE_YOUR_GAS_URL_HERE";
-
-fetch(`${API}?action=getArticle&slug=${slug}`)
+fetch(`${API}?action=getArticles`)
 .then(r => r.json())
-.then(d => {
-  title.innerText = d.title;
-  content.innerHTML = d.content;
+.then(res => {
+  const box = document.getElementById("articles");
+  box.innerHTML = res.data.map(a => `
+    <div class="card">
+      <h3>${a.title}</h3>
+      <p>${a.short}</p>
+      <a href="article.html?slug=${a.slug}">Read</a>
+    </div>
+  `).join("");
 });
-</script>
