@@ -30,3 +30,46 @@ fetch(`${GAS_URL}?action=projects`)
     grid.innerHTML = "<p>Error loading projects</p>";
     console.error(err);
   });
+
+/* ===== SKILLS ===== */
+const skillsBox = document.getElementById("skillsList");
+
+fetch(`${GAS_URL}?action=skills`)
+  .then(res => res.json())
+  .then(json => {
+    skillsBox.innerHTML = "";
+    json.data.forEach(s => {
+      const div = document.createElement("div");
+      div.className = "skill";
+      div.innerHTML = `
+        <div class="skill-title">
+          <span>${s.title}</span>
+          <span>${s.percent}%</span>
+        </div>
+        <div class="bar">
+          <span style="width:${s.percent}%"></span>
+        </div>
+      `;
+      skillsBox.appendChild(div);
+    });
+  });
+
+/* ===== CERTIFICATES ===== */
+const certBox = document.getElementById("certList");
+
+fetch(`${GAS_URL}?action=certificates`)
+  .then(res => res.json())
+  .then(json => {
+    certBox.innerHTML = "";
+    json.data.forEach(c => {
+      const div = document.createElement("div");
+      div.className = "cert";
+      div.innerHTML = `
+        <h4>${c.title}</h4>
+        <p>${c.issuer}</p>
+        <a href="${c.link}" target="_blank">Verify →</a>
+      `;
+      certBox.appendChild(div);
+    });
+  });
+
