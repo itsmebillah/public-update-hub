@@ -1,62 +1,241 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
+  <!-- ================= BASIC ================= -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Md. Masum Billah | Portfolio</title>
+  <title>Md. Masum Billah — Data Analyst Portfolio</title>
 
-  <link rel="stylesheet" href="style.css" />
+  <!-- ================= SEO ================= -->
+  <meta name="description" content="Md. Masum Billah — Data Analyst & Automation Specialist. Python, SQL, Power BI, Google Apps Script.">
+  <meta name="keywords" content="Data Analyst Bangladesh, SQL, Python, Power BI, Google Apps Script">
+  <meta name="author" content="Md. Masum Billah">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Md. Masum Billah | Data Analyst Portfolio">
+  <meta property="og:description" content="Turning data into decisions with analytics & automation.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://itsmebillah.github.io/me/">
+
+  <!-- ================= ICONS ================= -->
+  <link rel="icon" href="https://cdn.jsdelivr.net/npm/emoji-datasource-apple/img/apple/64/1f4ca.png">
+
+  <!-- ================= FONTS & ICONS ================= -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <!-- ================= STYLE ================= -->
+  <style>
+    :root{
+      --bg:#0b0f1a;
+      --card:#11172a;
+      --text:#e5e7eb;
+      --muted:#9ca3af;
+      --accent:#6366f1;
+      --accent2:#22d3ee;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:Inter,sans-serif;
+      background:
+        radial-gradient(800px 400px at 10% -10%,#1b2250,transparent),
+        radial-gradient(600px 400px at 90% 10%,#0ea5e9,transparent),
+        var(--bg);
+      color:var(--text);
+    }
+    a{color:inherit;text-decoration:none}
+    section{padding:90px 20px}
+    .container{max-width:1150px;margin:auto}
+
+    /* HEADER */
+    header{
+      position:fixed;top:0;width:100%;
+      background:rgba(11,15,26,.8);
+      backdrop-filter:blur(10px);
+      border-bottom:1px solid #1f2937;
+      z-index:100;
+    }
+    nav{display:flex;justify-content:space-between;align-items:center;padding:15px 20px}
+    .logo{font-weight:700;color:var(--accent)}
+    .nav a{margin-left:18px;font-size:14px;color:var(--muted)}
+    .nav a:hover{color:var(--accent)}
+
+    /* HERO */
+    .hero{min-height:100vh;display:flex;align-items:center}
+    .hero h1{font-size:46px;margin-bottom:10px}
+    .hero span{color:var(--accent)}
+    .hero p{color:var(--muted);max-width:650px}
+    .btn{
+      display:inline-block;margin-top:25px;padding:12px 22px;
+      background:linear-gradient(135deg,var(--accent),var(--accent2));
+      border-radius:8px;color:#000;font-weight:600;
+    }
+
+    /* CARDS */
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px}
+    .card{
+      background:linear-gradient(180deg,#11172a,#0b1020);
+      border:1px solid #1f2937;
+      border-radius:14px;padding:22px;
+      transition:.3s;
+    }
+    .card:hover{transform:translateY(-6px);border-color:var(--accent)}
+    .card h3{margin-top:0}
+
+    /* FOOTER */
+    footer{
+      background:#020617;
+      border-top:1px solid #1f2937;
+      text-align:center;padding:35px;color:var(--muted)
+    }
+
+    /* ARTICLE MODAL */
+    .modal{
+      position:fixed;inset:0;
+      background:rgba(0,0,0,.7);
+      display:none;align-items:center;justify-content:center;
+    }
+    .modal-content{
+      max-width:800px;width:90%;
+      background:#020617;border-radius:14px;
+      padding:25px;max-height:85vh;overflow:auto;
+    }
+    .close{float:right;cursor:pointer;color:#ef4444}
+  </style>
 </head>
+
 <body>
-<div id="articles"></div>
-<script src="script.js"></script>
 
-  <!-- HERO -->
-  <section class="hero">
-    <h1>Md. Masum Billah</h1>
-    <p>Data Analyst | Automation | BI</p>
-  </section>
-
-  <!-- PROJECTS -->
-  <section class="projects">
-    <h2>Projects</h2>
-    <div id="projectsGrid" class="projects-grid">
-      <p class="loading">Loading projects...</p>
+<header>
+  <nav>
+    <div class="logo">Masum Billah</div>
+    <div class="nav">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#articles">Articles</a>
+      <a href="#contact">Contact</a>
     </div>
-  </section>
-<!-- SKILLS -->
-<section class="skills">
-  <h2>Skills</h2>
-  <div id="skillsList" class="skills-list">
-    <p class="loading">Loading skills...</p>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero container">
+  <div>
+    <h1>Hi, I’m <span>Md. Masum Billah</span></h1>
+    <p>Data Analyst & Automation Specialist — Python, SQL, Power BI, Google Apps Script.  
+    I build data-driven systems, dashboards & smart automations.</p>
+    <a href="#projects" class="btn">View My Work</a>
   </div>
 </section>
 
-<!-- CERTIFICATES -->
-<section class="certificates">
-  <h2>Certificates</h2>
-  <div id="certList" class="cert-grid">
-    <p class="loading">Loading certificates...</p>
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <h2>About Me</h2>
+    <p>I specialize in analytics, reporting automation, dashboards and business intelligence.
+       My focus is clean data, clear insights, and scalable systems.</p>
   </div>
 </section>
-<section class="articles">
-  <h2>Articles</h2>
-  <div id="articleList"></div>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <h2>Projects</h2>
+    <div class="grid" id="projectsGrid"></div>
+  </div>
 </section>
 
-<!-- MODAL -->
-<div id="articleModal" class="modal hidden">
-  <div class="modal-box">
-    <button onclick="closeArticle()">✕</button>
-    <h2 id="articleTitle"></h2>
+<!-- ARTICLES -->
+<section id="articles">
+  <div class="container">
+    <h2>Articles</h2>
+    <div class="grid" id="articlesGrid"></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <h2>Contact</h2>
+    <form id="contactForm">
+      <input required placeholder="Name" id="name"><br><br>
+      <input required placeholder="Email" id="email"><br><br>
+      <textarea required placeholder="Message" id="message"></textarea><br><br>
+      <button class="btn">Send Message</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  © <span id="year"></span> Md. Masum Billah — Built with ❤️
+</footer>
+
+<!-- ARTICLE MODAL -->
+<div class="modal" id="articleModal">
+  <div class="modal-content">
+    <span class="close" onclick="closeArticle()">✖</span>
     <div id="articleBody"></div>
   </div>
 </div>
 
-  <footer>
-    © 2025 Md. Masum Billah
-  </footer>
+<!-- ================= SCRIPT ================= -->
+<script>
+const API = "YOUR_APPS_SCRIPT_URL"; // BLOCK-2 এ বসবে
 
-  <script src="main.js"></script>
+document.getElementById("year").innerText=new Date().getFullYear();
+
+/* PROJECTS */
+fetch(API+"?action=getProjects").then(r=>r.json()).then(d=>{
+  const g=document.getElementById("projectsGrid");
+  d.data.forEach(p=>{
+    g.innerHTML+=`
+      <div class="card">
+        <h3>${p.title}</h3>
+        <p>${p.description}</p>
+      </div>`;
+  });
+});
+
+/* ARTICLES */
+fetch(API+"?action=getArticles").then(r=>r.json()).then(d=>{
+  const g=document.getElementById("articlesGrid");
+  d.data.forEach(a=>{
+    g.innerHTML+=`
+      <div class="card" onclick="openArticle('${a.slug}')">
+        <h3>${a.title}</h3>
+        <p>${a.short}</p>
+      </div>`;
+  });
+});
+
+function openArticle(slug){
+  fetch(API+"?action=getArticle&slug="+slug)
+    .then(r=>r.json()).then(d=>{
+      document.getElementById("articleBody").innerHTML=
+        "<h2>"+d.data.title+"</h2><p>"+d.data.content+"</p>";
+      document.getElementById("articleModal").style.display="flex";
+  });
+}
+function closeArticle(){
+  document.getElementById("articleModal").style.display="none";
+}
+
+/* CONTACT */
+document.getElementById("contactForm").onsubmit=e=>{
+  e.preventDefault();
+  fetch(API,{method:"POST",body:JSON.stringify({
+    action:"submitContact",
+    name:name.value,email:email.value,message:message.value
+  })});
+  alert("Message sent");
+  e.target.reset();
+};
+
+/* VISITOR TRACK */
+fetch(API,{method:"POST",body:JSON.stringify({action:"logVisitor"})});
+</script>
+
 </body>
 </html>
