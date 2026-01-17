@@ -1,16 +1,13 @@
 {
   "name": "bangladesh-api",
   "version": "1.0.0",
-  "description": "Bangladesh Updates API for Railway",
-  "main": "server.js",
+  "description": "API for Bangladesh Updates",
+  "main": "index.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node index.js"
   },
   "dependencies": {
     "express": "^4.18.2",
-    "cors": "^2.8.5",
-    "sqlite3": "^5.1.6",
-    "node-cron": "^3.0.2",
-    "axios": "^1.6.2"
+    "cors": "^2.8.5"
   }
 }
